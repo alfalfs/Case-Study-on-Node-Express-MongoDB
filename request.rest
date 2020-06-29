@@ -1,0 +1,29 @@
+//API Testing from VScode without Postman
+GET http://localhost:3006/login/signup
+###
+POST http://localhost:3006/login/signup
+Content-Type:application/json
+
+{
+ "fname":"abcd", 
+ "lname":"efgh", 
+ "uemail":"alfa@aa.co",
+ "uphone":"9632587418", 
+ "pwd":"Abcd@1234",
+ "cpwd":"Abcd@1234",
+ "uaddress":"xyz stu",
+ "ugender":"male",
+ "udob":"1994-06-01",
+ "role":"admin"
+}
+
+######
+
+POST http://localhost:3006/login
+ Content-Type:application/json
+
+{
+    "uemail": "alfa@aa.co",
+    "upassword": "Abcd@1234"
+
+}

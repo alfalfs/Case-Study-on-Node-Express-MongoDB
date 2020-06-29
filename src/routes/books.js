@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router({ mergeParams: true })
 const Book = require('../models/book')
 const Author = require('../models/author')
+const Authenticate = require('../middlewares/authenticate')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
 
 // All Books Route

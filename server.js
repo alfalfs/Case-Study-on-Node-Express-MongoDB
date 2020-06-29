@@ -8,11 +8,12 @@ const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
+const bcrypt = require('bcrypt')
 
 const indexRouter = require('./src/routes/index')
 const authorRouter = require('./src/routes/authors')
 const bookRouter = require('./src/routes/books')
-
+const userRouter = require('./src/routes/users')
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/src/views')
 app.set('layout', 'layouts/layout')
@@ -21,7 +22,7 @@ app.use(methodOverride('_method'))
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }))
 app.use(express.json())
-    //app.use(express.urlencoded({ limit: '10mb', extended: false })); //body parser inbuild in express
+app.use(express.urlencoded({ limit: '10mb', extended: false })); //body parser inbuild in express
 
 const mongoose = require('mongoose')
     // connection string
@@ -29,11 +30,12 @@ mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTo
 const db = mongoose.connection
 
 //consoling mongo status
-db.on('error', error => console.error(error))
-db.once('open', () => console.log('Connected to Mongoose'))
+db.on('error', error => console.error(error)) // error log 
+db.once('open', () => console.log('Connected to Mongoose')) // indication to db server okay
 
 app.use('/', indexRouter)
 app.use('/authors', authorRouter)
 app.use('/books', bookRouter)
+app.use('/login', userRouter)
 
 app.listen(process.env.PORT || 3006)

@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Author = require('../models/author')
 const Book = require('../models/book')
+const Authenticate = require('../middlewares/authenticate')
 
 //all author route
 router.get('/', async(req, res) => {
@@ -19,7 +20,7 @@ router.get('/', async(req, res) => {
             res.redirect('/')
         }
     })
-    //new author route
+    //new author route with middle ware Authenticate
 router.get('/new', (req, res) => {
         res.render('authors/new', { author: new Author() })
     })

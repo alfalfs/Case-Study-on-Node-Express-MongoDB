@@ -18,7 +18,13 @@
 }
 
 body {
-    background: linear-gradient(to right, var(--color-background-dark), var(--color-background-light));
+    /*background: linear-gradient(to right, var(--color-background-dark), var(--color-background-light));*/
+    background-image: url(/images/photo-of-woman-reading-book-3747468.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-items: center;
+    color: #000044;
 }
 
 .container {
