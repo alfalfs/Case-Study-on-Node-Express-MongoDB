@@ -19,8 +19,7 @@ const login = (req, res, next) => {
                     }
                     if (result) {
                         let token = jwt.sign({ name: user.firstname, role: user.role }, "Averysecertcode", { expiresIn: '1h' })
-                        res.render('./index', {
-                            errorMessage: 'Login Successfull',
+                        res.render('users/home', {
                             title: 'home',
                             token
 
